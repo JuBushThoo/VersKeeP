@@ -1,0 +1,123 @@
+{
+  "name": "verskeep",
+  "displayName": "VersKeeP",
+  "description": "A VS Code extension for local file version control",
+  "version": "0.1.0",
+  "engines": {
+    "vscode": "^1.96.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/verskeep.git"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:verskeep.saveVersion",
+    "onCommand:verskeep.loadVersion",
+    "onCommand:verskeep.deleteVersion",
+    "onCommand:verskeep.viewVersions",
+    "onView:verskeepVersionsView"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "verskeep.saveVersion",
+        "title": "Save Version",
+        "category": "VersKeeP"
+      },
+      {
+        "command": "verskeep.loadVersion",
+        "title": "Load Version",
+        "category": "VersKeeP"
+      },
+      {
+        "command": "verskeep.deleteVersion",
+        "title": "Delete Version",
+        "category": "VersKeeP"
+      },
+      {
+        "command": "verskeep.viewVersions",
+        "title": "View All Versions",
+        "category": "VersKeeP"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "submenu": "verskeep.versions",
+          "group": "verskeep"
+        }
+      ],
+      "editor/context": [
+        {
+          "submenu": "verskeep.versions",
+          "group": "verskeep"
+        }
+      ],
+      "verskeep.versions": [
+        {
+          "command": "verskeep.saveVersion",
+          "group": "1_version"
+        },
+        {
+          "command": "verskeep.loadVersion",
+          "group": "1_version"
+        },
+        {
+          "command": "verskeep.deleteVersion",
+          "group": "1_version"
+        },
+        {
+          "command": "verskeep.viewVersions",
+          "group": "1_version"
+        }
+      ]
+    },
+    "submenus": [
+      {
+        "id": "verskeep.versions",
+        "label": "VERSIONS"
+      }
+    ],
+    "views": {
+      "explorer": [
+        {
+          "id": "verskeepVersionsView",
+          "name": "File Versions"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "webpack",
+    "watch": "webpack --watch",
+    "package": "webpack --mode production --devtool hidden-source-map",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "npm run compile-tests && npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/glob": "^7.2.0",
+    "@types/mocha": "^9.1.1",
+    "@types/node": "^16.18.126",
+    "@types/sinon": "^17.0.4",
+    "@types/vscode": "^1.96.0",
+    "@typescript-eslint/eslint-plugin": "^5.62.0",
+    "@typescript-eslint/parser": "^5.62.0",
+    "@vscode/test-electron": "^1.6.2",
+    "eslint": "^8.57.1",
+    "glob": "^7.2.3",
+    "mocha": "^9.2.2",
+    "sinon": "^20.0.0",
+    "ts-loader": "^9.5.2",
+    "typescript": "^4.9.5",
+    "webpack": "^5.99.9",
+    "webpack-cli": "^4.10.0"
+  }
+}
