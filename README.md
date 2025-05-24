@@ -41,7 +41,7 @@ VersKeeP stores file versions in a `.versions` folder in your workspace. Each ve
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/verskeep.git
+git clone https://github.com/JuBushThoo/verskeep.git
 cd verskeep
 
 # Install dependencies
